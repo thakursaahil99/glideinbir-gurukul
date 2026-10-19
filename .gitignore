@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/.next-dev/
 /out/
 
 # production
@@ -39,3 +40,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+!.env.example
+
+# local JSON data store (users, site content)
+/data
+
+# Monaco editor copy (scripts/copy-monaco.mjs)
+/public/monaco/
