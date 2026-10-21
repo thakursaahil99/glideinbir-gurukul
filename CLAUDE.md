@@ -161,6 +161,17 @@ Everything must stay within free tiers.
     what was sent; served only to the candidate, that company's owner and admins.
   - Job alerts: daily digest via `GET /api/cron/jobs` (Bearer CRON_SECRET).
 - [ ] Phase 9: polish & deploy
+  - Done (polish): `sitemap.ts`, `robots.ts`, `manifest.ts`, `icon.svg`, `apple-icon.tsx`,
+    `opengraph-image.tsx` (reads admin-editable site content, so force-dynamic); `metadataBase`
+    from `siteUrl()` (`src/core/site/url.ts`). Security headers in `next.config.ts` (CSP limited to
+    frame-ancestors/object-src/base-uri on purpose: Razorpay, YouTube, LiveKit, Monaco).
+  - Startup env check: `checkEnv` (`src/core/config/env.ts`, tested) run from `src/instrumentation.ts`;
+    in production bad auth secrets or half-set integrations stop the server, the rest are `[env]` warnings.
+  - `/api/health`; in-shell `loading.tsx`/`error.tsx` for `(app)` and `admin` (shared `route-states.tsx`);
+    skip link → `#main` on every layout; CI in `.github/workflows/ci.yml`; README rewritten.
+  - Not done: hosting. The JSON store needs one long-lived process + persistent disk (not serverless).
+  - Don't run `prettier --write` on whole folders: existing code isn't prettier-formatted and it
+    rewrites ~70 files.
 
 ## Hard-won rules (read before writing UI)
 - **Client mutations go through `rpc()` (`src/lib/rpc.ts` → `/api/rpc/[name]`)**, not by calling

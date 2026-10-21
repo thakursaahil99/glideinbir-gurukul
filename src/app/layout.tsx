@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Plus_Jakarta_Sans, Tiro_Devanagari_Hindi } from "n
 import { ThemeProvider, themeScript } from "@/components/theme/theme-provider";
 import { SiteProvider } from "@/core/site/site-context";
 import { getSite } from "@/core/site/store";
+import { siteUrl } from "@/core/site/url";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -29,11 +30,16 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { brand, hero } = await getSite();
+  const title = `${brand.name} · ${hero.words.join(" ")}`;
+  const description =
+    "One login, one wallet, seven learning worlds: courses, test series, notes, instant doubt solving, mentorship, coding practice and jobs.";
   return {
-    title: { default: `${brand.name} · ${hero.words.join(" ")}`, template: `%s · ${brand.name}` },
-    description:
-      "One login, one wallet, seven learning worlds: courses, test series, notes, instant doubt solving, mentorship, coding practice and jobs.",
+    metadataBase: new URL(siteUrl()),
+    title: { default: title, template: `%s · ${brand.name}` },
+    description,
     applicationName: brand.name,
+    openGraph: { type: "website", siteName: brand.name, title, description, locale: "en_IN", url: "/" },
+    twitter: { card: "summary_large_image", title, description },
   };
 }
 
@@ -52,6 +58,12 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className={`${bricolage.variable} ${jakarta.variable} ${tiro.variable} grain antialiased`}>
+        <a
+          href="#main"
+          className="sr-only z-[100] rounded-xl bg-fg px-4 py-2 font-semibold text-bg focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        >
+          Skip to content
+        </a>
         <ThemeProvider>
           <SiteProvider value={site}>{children}</SiteProvider>
         </ThemeProvider>

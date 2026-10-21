@@ -16,7 +16,7 @@ export default function LandingPage() {
       <ScrollProgress />
       <CursorGlow />
       <Navbar />
-      <main className="relative overflow-x-clip">
+      <main id="main" className="relative overflow-x-clip">
         <Hero />
         <Marquee />
         <ModulesBento />

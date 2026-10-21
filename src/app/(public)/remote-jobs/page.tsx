@@ -14,7 +14,7 @@ export default async function RemoteJobsPage() {
   if (!(await jobsEnabled())) notFound();
   const { jobs, syncedAt } = await externalJobs();
   return (
-    <div className="relative min-h-svh overflow-hidden px-4 py-10 sm:px-6">
+    <div id="main" role="main" className="relative min-h-svh overflow-hidden px-4 py-10 sm:px-6">
       <div className="pointer-events-none absolute -top-40 left-1/2 size-[50vmax] -translate-x-1/2 rounded-full bg-[#3d8bff]/15 blur-[120px]" />
       <div className="relative mx-auto max-w-5xl space-y-8">
         <header className="flex flex-wrap items-center justify-between gap-4">

@@ -134,7 +134,7 @@ export function AppShell({
             </button>
             <label className="flex flex-1 items-center gap-2 rounded-xl bg-fg/[0.04] px-3 py-2 text-sm text-muted">
               <Search className="size-4 shrink-0" />
-              <input placeholder="Search courses, tests, notes, mentors…" className="w-full bg-transparent outline-none placeholder:text-muted" />
+              <input aria-label="Search" placeholder="Search courses, tests, notes, mentors…" className="w-full bg-transparent outline-none placeholder:text-muted" />
               <kbd className="hidden rounded-md border border-line px-1.5 text-[10px] sm:block">Ctrl K</kbd>
             </label>
             <Link href="/wallet" className="hidden items-center gap-2 rounded-xl bg-gradient-to-r from-teal/20 to-primary/20 px-3 py-2 text-sm font-semibold sm:flex">
@@ -178,6 +178,7 @@ export function AppShell({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            id="main"
             className="px-3 py-8 sm:px-5"
           >
             {children}

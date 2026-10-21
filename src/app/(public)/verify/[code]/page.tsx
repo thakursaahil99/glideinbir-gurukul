@@ -12,7 +12,7 @@ export default async function VerifyPage({ params }: { params: Promise<{ code: s
   const cert = /^GG-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(code) ? await getCertificate(code) : null;
 
   return (
-    <div className="relative grid min-h-svh place-items-center overflow-hidden px-4 py-16">
+    <div id="main" role="main" className="relative grid min-h-svh place-items-center overflow-hidden px-4 py-16">
       <div className="absolute top-1/2 left-1/2 size-[60vmax] -translate-x-1/2 -translate-y-1/2 animate-aurora rounded-full bg-primary/15 blur-[120px]" />
       <div className="glass relative w-full max-w-lg rounded-[32px] p-8 text-center sm:p-10">
         <BirdMark className="mx-auto w-14" />

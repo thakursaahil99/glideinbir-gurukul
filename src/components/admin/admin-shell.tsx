@@ -108,7 +108,7 @@ export function AdminShell({ user, children }: { user: PublicUser; children: Rea
             <ThemeToggle />
           </div>
         </header>
-        <main className="mx-auto max-w-5xl px-3 py-8 sm:px-5">{children}</main>
+        <main id="main" className="mx-auto max-w-5xl px-3 py-8 sm:px-5">{children}</main>
       </div>
     </div>
   );

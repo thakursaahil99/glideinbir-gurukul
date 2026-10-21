@@ -18,7 +18,7 @@ export function AuthScreen({ mode, next }: { mode: "login" | "signup"; next?: st
   const modules = useModules();
 
   return (
-    <div className="grid min-h-svh lg:grid-cols-2">
+    <div id="main" role="main" className="grid min-h-svh lg:grid-cols-2">
       {/* Brand panel */}
       <div className="relative hidden overflow-hidden bg-[#07061a] text-white lg:block">
         <div className="absolute top-[-20%] left-[-20%] size-[70%] animate-aurora rounded-full bg-[#8b7bff]/40 blur-[120px]" />
